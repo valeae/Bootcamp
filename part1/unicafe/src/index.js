@@ -2,6 +2,27 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
 
+const Statistics = ({good, neutral, bad}) => {
+  const All = good + neutral + bad;
+  const Average = ((good - bad)/(good + neutral + bad))
+  const Positive = ((good + neutral)/(good + neutral + bad))
+
+
+  return (
+    <div>
+    <p>Good: {good}</p>
+		<p>Neutral: {neutral}</p>
+		<p>Bad: {bad}</p>
+
+    <h2>Collection of comments</h2>
+    <p>All: {All}</p>
+		<p>Average: {Average}</p>
+		<p>Positive: {Positive}</p>
+    </div>
+  )
+}
+
+
 const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
@@ -14,15 +35,9 @@ const App = () => {
 			<button onClick = {() => setNeutral(neutral + 1)}>Neutral</button>
       <button onClick = {() => setBad(bad + 1)}>Bad</button>
 
-      <h1> Statistics </h1>
-      <h3>Good: {good}</h3>
-			<h3>Neutral: {neutral}</h3>
-			<h3>Bad: {bad}</h3>
-
-      <h1>Collection of comments</h1>
-      <h3>All: {good + neutral + bad}</h3>
-			<h3>Average: {(good - bad)/(good + neutral + bad)}</h3>
-			<h3>Positive: {(good + neutral)/(good + neutral + bad)}</h3>
+      <h1>Statistics</h1>
+      <Statistics good={good} neutral={neutral} bad={bad} />
+      
     </div>
   )
 }
