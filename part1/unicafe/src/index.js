@@ -18,6 +18,11 @@ const App = () => {
       <h3>Good: {good}</h3>
 			<h3>Neutral: {neutral}</h3>
 			<h3>Bad: {bad}</h3>
+
+      <h1>Collection of comments</h1>
+      <h3>All: {good + neutral + bad}</h3>
+			<h3>Average: {(good - bad)/(good + neutral + bad)}</h3>
+			<h3>Positive: {(good + neutral)/(good + neutral + bad)}</h3>
     </div>
   )
 }
