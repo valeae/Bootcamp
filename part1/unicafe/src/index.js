@@ -4,16 +4,14 @@ import ReactDOM from 'react-dom'
 
 const Button = ({handleClick, text}) => {
   return (
-    <div>
       <button onClick = {handleClick}>{text}</button>
-    </div>
   )
 };
 
 const StatisticLine = ({text, value, symbol}) => {
   return (
     <tr>
-      <th>{text}</th>
+      <td>{text}</td>
       <td>{value} {symbol}</td>
     </tr>
   )
@@ -58,7 +56,6 @@ const App = () => {
   return (
     <div>
       <h1> Give Feedback </h1>
-      
         <Button handleClick={setToGood} text="Good" />
         <Button handleClick={setToNeutral} text="Neutral" />
         <Button handleClick={setToBad} text="Bad" />
