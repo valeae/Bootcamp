@@ -11,18 +11,34 @@ const Button = ({handleClick, text}) => {
 const App = ({anecdotes}) => {
   const [selected, setSelected] = useState(0)
   const [votes, setVotes] = useState(new Uint8Array(anecdotes.length))
-
+  
   const setToSelected = () => {setSelected(Math.floor(Math.random() * anecdotes.length))}
   const setToVote = () => {setVotes({...votes, [selected] : votes[selected] +1})}
+
+  const MostVoted = () => {
+    var max = 1, maxVotes = 1
+      
+      for(var vote in votes) {
+        if (votes[vote] > max) {
+          maxVotes = vote
+          max = votes[vote]
+        }
+      }
+      return maxVotes
+  }
 
   return (
     <div>
       <h1>Anecdotes</h1>
-        <Button handleClick={setToSelected} text="¡Click Me!"/>
-        <Button handleClick={setToVote} text="Like"/>
+      <Button handleClick={setToSelected} text="¡Click Me!"/>
+      <Button handleClick={setToVote} text="Like"/>
       
-        <p>{anecdotes[selected]}</p>
-        <p>This has: {votes[selected]} votes</p>
+      <p>{anecdotes[selected]}</p>
+      <p>This has: {votes[selected]} votes</p>
+
+      <h1>Anecdote with most votes</h1>
+      <p>{anecdotes[MostVoted()]}</p>
+      <p>This has {votes[MostVoted()]} total votes</p>
     </div>
   )
 }
