@@ -12,7 +12,7 @@ function Course({course}) {
   
 const Header = ({name}) => {
     
-    return <h1>{name}</h1>;
+    return <h2>{name}</h2>;
   };
   
 const Content = ({parts}) => {
@@ -41,7 +41,9 @@ const Total = ({total}) => {
 
   return (
     <>
-    <p>Total of {result} exercises</p>
+    <p>
+      <strong>Total of {result} exercises</strong>
+    </p>
     </>
   )
 };
